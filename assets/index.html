@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!--CSS link -->
@@ -11,11 +12,29 @@
     <body>
         <div class="container">
             <div class="row1">
-                <h1>Matt's Totally Trivial Trivia</h1>
-                <h2>Time Remaining: 0 Seconds</h2>
-                <h3>-Question Goes Here-</h3>
+                <span>Matt's Totally Trivial Trivia</span>
+            </div>
+            <div class="row2">
+                <i class="fa fa-clock-o" style="font-size:36px"></i>
+                <span class="clock">Time Remaining: <span id="seconds">0</span>Seconds</span>
+            </div>
+            <div class="row3">
+                <span id="questionSpot">-Question Goes Here-</span>
+            </div>  
+            <div class="row4">
+                <div>
+                    <button><span onclick="answers()" class="answer" id="answer1" value="A">Answer1</span></button>
+                </div>
+                <div>
+                    <button><span onclick="answers()" class="answer" id="answer2" value="B">Answer2</span></button>
+                </div>
+                <div>
+                    <button><span onclick="answers()" class="answer" id="answer3" value="C">Answer3</span></button>
+                </div>
             </div>
         </div>
-
+        
+        
+        <script src="app.js"></script>
     </body>
 </html>
