@@ -1,6 +1,8 @@
 var score = 0;
-var number = 7;
+var number = 9;
 var intervalId;
+var wins;
+var losses;
 
 var questions = [
     {
@@ -11,11 +13,39 @@ var questions = [
         answer: 'c'
     },
     {
-        prompt: "What US State has Mt. Rushmore?",
+        prompt: "What US State is Mt. Rushmore located in?",
         choiceA: "North Dakota",
         choiceB: "South Dakota",
         choiceC: "Wyoming",
         answer: "b"
+    },
+    {
+        prompt: "What US State's Capitol is named Jefferson City?",
+        choiceA: 'Missouri',
+        choiceB: 'Nebraska',
+        choiceC: 'Tennessee',
+        answer: 'a'
+    },
+    {
+        prompt: 'How many teams are in the NFL?', 
+        choiceA: '30',
+        choiceB: '31',
+        choiceC: '32',
+        answer: 'c'
+    },
+    {
+        prompt: 'Who was the 38th US President?',
+        choiceA: 'Gerald Ford',
+        choiceB: 'Lyndon B. Johnson',
+        choiceC: 'Richard Nixon',
+        answer: 'a'
+    },
+    {
+        prompt: 'What two colors are used for the Chinese flag?',
+        choiceA: 'Black and Red',
+        choiceB: 'Yellow and Black',
+        choiceC: 'Red and Yellow',
+        answer: 'c'
     }
 ];
 
@@ -45,8 +75,7 @@ function timer() {
 
 function stop() {
     //  Clears our intervalId
-    //  We just pass the name of the interval
-    //  to the clearInterval function.
+    //  Pass the name of the interval to the clearInterval function.
     clearInterval(intervalId);
   }
 
@@ -65,30 +94,31 @@ timer();
 // }
 // alert('You got ' + score + '/' + questions.length);
 
-//loop through questions
 var i = false;
-for (var i = 0; i < questions.length; i++) {
-    $('#questionSpot').html(questions[i].prompt);
-    $('#answer1').html("A: " + questions[i].choiceA);
-    $('#answer2').html("B: " + questions[i].choiceB);
-    $('#answer3').html("C: " + questions[i].choiceC);
-    // answers();
-    console.log(i);
 
-    function answers(i) {
+function randomize(array) {
+    var currentQuestion = array[Math.floor(Math.random() * array.length)];
+    console.log(currentQuestion);
+
+    $('#questionSpot').html(currentQuestion.prompt);
+    $('#answer1').html("A: " + currentQuestion.choiceA);
+$('#answer2').html("B: " + currentQuestion.choiceB);
+$('#answer3').html("C: " + currentQuestion.choiceC);
+$('.answer').attr('correct', currentQuestion.answer)
+}
+randomize(questions);
+
         $('.answer').on('click', function() {
-            var chosen = $(this).attr('value');
-            console.log(i);
+            var chosen = $(this).attr('correct');
+            console.log(chosen);
 
-            if(chosen === questions[i].answer) {
-                console.log('good');
+            if (chosen === $(this).attr('value')) {
+                alert('good');
             } 
             else {
-
-                console.log('Not good');
+                alert('Not good');
             }
         })
-    }
 
 // function answers() {
 //     $('.answer').on('click', function() {
@@ -102,7 +132,7 @@ for (var i = 0; i < questions.length; i++) {
 
 
    
-}
+
 //target q div to show q
 
 //clock countdown starts every time player wins, loses, or page refreshes
