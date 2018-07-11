@@ -1,8 +1,8 @@
 var score = 0;
 var number = 9;
 var intervalId;
-var wins;
-var losses;
+var wins = 0;
+var losses = 0;
 
 var questions = [
     {
@@ -27,7 +27,7 @@ var questions = [
         answer: 'a'
     },
     {
-        prompt: 'How many teams are in the NFL?', 
+        prompt: 'How many teams are in the NFL?',
         choiceA: '30',
         choiceB: '31',
         choiceC: '32',
@@ -59,14 +59,15 @@ function decrement() {
 
     //  Once number hits zero...
     if (number === 0) {
+        alert('Time Up');
+        losses++;
+        //  ...run the stop function.
+        stop();
 
-      //  ...run the stop function.
-      stop();
-
-      //  Alert the user that time is up.
-      //alert("Time Up!");
+        //  Alert the user that time is up.
+        //alert("Time Up!");
     }
-  }
+}
 
 function timer() {
     clearInterval(intervalId);
@@ -77,7 +78,7 @@ function stop() {
     //  Clears our intervalId
     //  Pass the name of the interval to the clearInterval function.
     clearInterval(intervalId);
-  }
+}
 
 timer();
 
@@ -102,28 +103,42 @@ function randomize(array) {
 
     $('#questionSpot').html(currentQuestion.prompt);
     $('#answer1').html("A: " + currentQuestion.choiceA);
-$('#answer2').html("B: " + currentQuestion.choiceB);
-$('#answer3').html("C: " + currentQuestion.choiceC);
-$('.answer').attr('correct', currentQuestion.answer)
+    $('#answer2').html("B: " + currentQuestion.choiceB);
+    $('#answer3').html("C: " + currentQuestion.choiceC);
+    $('.answer').attr('correct', currentQuestion.answer)
 }
+
 randomize(questions);
 
-        $('.answer').on('click', function() {
-            var chosen = $(this).attr('correct');
-            console.log(chosen);
+$('.answer').on('click', function() {
+    var chosen = $(this).attr('correct');
+    console.log(chosen);
 
-            if (chosen === $(this).attr('value')) {
-                alert('good');
-            } 
-            else {
-                alert('Not good');
-            }
-        })
+    if (chosen === $(this).attr('value')) {
+        alert('You win');
+        wins++;
+        $('#wins').text(wins);
+    }
+    else {
+        alert('You lose');
+        losses++;
+        $('#losses').text(losses);
+        
+    }
+});
+
+if () {
+
+}
+else if () {
+    
+}
+
 
 // function answers() {
 //     $('.answer').on('click', function() {
 //         var chosen = $(this).attr('value');
-        
+
 //         if(chosen === questions[i].answer) {
 //             console.log('good');
 //         }
@@ -131,12 +146,10 @@ randomize(questions);
 
 
 
-   
+
 
 //target q div to show q
 
 //clock countdown starts every time player wins, loses, or page refreshes
 
 //questions are displayed
-
-//
