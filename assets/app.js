@@ -97,8 +97,8 @@ timer();
 
 var i = false;
 
-function randomize(array) {
-    var currentQuestion = array[Math.floor(Math.random() * array.length)];
+function setNextQuestion(array) {
+    var currentQuestion = questions.shift();
     console.log(currentQuestion);
 
     $('#questionSpot').html(currentQuestion.prompt);
@@ -108,7 +108,7 @@ function randomize(array) {
     $('.answer').attr('correct', currentQuestion.answer)
 }
 
-randomize(questions);
+setNextQuestion(questions);
 
 $('.answer').on('click', function() {
     var chosen = $(this).attr('correct');
@@ -118,20 +118,18 @@ $('.answer').on('click', function() {
         alert('You win');
         wins++;
         $('#wins').text(wins);
+        setNextQuestion();
     }
     else {
         alert('You lose');
         losses++;
         $('#losses').text(losses);
-        
+        setNextQuestion();
     }
 });
 
-if () {
+function reset() {
 
-}
-else if () {
-    
 }
 
 
