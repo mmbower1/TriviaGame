@@ -68,10 +68,11 @@ function decrement() {
     if (number === 0) {
         alert('Time Up');
         losses++;
-        
-        //run the stop function.
+        //  ...run the stop function.
         stop();
-        resetTimer();
+
+        //  Alert the user that time is up.
+        //alert("Time Up!");
     }
 }
 
@@ -81,12 +82,6 @@ function timer() {
     
 }
 
-function resetTimer() {
-    number = 9;
-    timer();
-
-}
-
 function stop() {
     //  Clears our intervalId
     //  Pass the name of the interval to the clearInterval function.
@@ -94,6 +89,10 @@ function stop() {
 }
 
 timer();
+
+function reset() {
+
+}
 
 var i = false;
 
@@ -105,13 +104,13 @@ function setNextQuestion(array) {
     $('#answer1').html("A: " + currentQuestion.choiceA);
     $('#answer2').html("B: " + currentQuestion.choiceB);
     $('#answer3').html("C: " + currentQuestion.choiceC);
-    $('.answer').attr('data-correct', currentQuestion.answer)
+    $('.answer').attr('correct', currentQuestion.answer)
 }
 
 setNextQuestion(questions);
 
 $('.answer').on('click', function() {
-    var chosen = $(this).attr('data-correct');
+    var chosen = $(this).attr('correct');
     console.log(chosen);
 
     if (chosen === $(this).attr('value')) {
@@ -119,33 +118,15 @@ $('.answer').on('click', function() {
         wins++;
         $('#wins').text(wins);
         setNextQuestion();
-        resetTimer();
     }
     else {
         alert('You lose');
         losses++;
         $('#losses').text(losses);
         setNextQuestion();
-        resetTimer();
     }
 });
 
 
-// function answers() {
-//     $('.answer').on('click', function() {
-//         var chosen = $(this).attr('value');
-
-//         if(chosen === questions[i].answer) {
-//             console.log('good');
-//         }
-//     })
 
 
-
-
-
-//target q div to show q
-
-//clock countdown starts every time player wins, loses, or page refreshes
-
-//questions are displayed
