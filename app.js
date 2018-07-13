@@ -46,6 +46,13 @@ var questions = [
         choiceB: 'Yellow and Black',
         choiceC: 'Red and Yellow',
         answer: 'c'
+    },
+    {
+        prompt: 'Who holds the MLB record for most homeruns in a season?',
+        choiceA: 'Alex Rodriguez',
+        choiceB: 'Barry Bonds',
+        choiceC: 'Babe Ruth',
+        answer: 'b'
     }
 ];
 
@@ -72,6 +79,7 @@ function decrement() {
 function timer() {
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
+    
 }
 
 function stop() {
@@ -81,19 +89,6 @@ function stop() {
 }
 
 timer();
-
-//cycling through questions
-// for ( var i=0; i < questions.length; i++) {
-//     var response = window.prompt(questions[i].prompt);
-//     if (response == questions[i].answer) {
-//         score++;
-//         alert('Correct');
-//     }
-//     else {
-//         alert('Wrong');
-//     }
-// }
-// alert('You got ' + score + '/' + questions.length);
 
 var i = false;
 
