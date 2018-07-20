@@ -53,6 +53,13 @@ var questions = [
         choiceB: 'Barry Bonds',
         choiceC: 'Babe Ruth',
         answer: 'b'
+    },
+    {
+        prompt: 'Who plays Captain Jack Sparrow in Disney films?',
+        choiceA: 'Brad Pitt',
+        choiceB: 'Johnny Depp',
+        choiceC: 'Leo Dicaprio',
+        answer: 'b'
     }
 ];
 
@@ -78,8 +85,8 @@ function decrement() {
 function timer() {
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
-    
 }
+timer();
 
 function resetTimer() {
     number = 9;
@@ -92,8 +99,6 @@ function stop() {
     //  Pass the name of the interval to the clearInterval function.
     clearInterval(intervalId);
 }
-
-timer();
 
 var i = false;
 
@@ -129,23 +134,3 @@ $('.answer').on('click', function() {
         resetTimer();
     }
 });
-
-
-// function answers() {
-//     $('.answer').on('click', function() {
-//         var chosen = $(this).attr('value');
-
-//         if(chosen === questions[i].answer) {
-//             console.log('good');
-//         }
-//     })
-
-
-
-
-
-//target q div to show q
-
-//clock countdown starts every time player wins, loses, or page refreshes
-
-//questions are displayed
