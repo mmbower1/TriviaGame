@@ -104,11 +104,14 @@ function stop() {
 }
 
 function endGame() {
-    if (wins + losses === 9) {
+    if (wins + losses === 8) {
         $(".container").hide();
         $(".scoreBoard").show();
+        // $("#replayButton").on("click", function(event) {
+        //      setNextQuestion(array); 
     }
 }
+
 var i = false;
 
 function setNextQuestion(array) {
@@ -148,9 +151,3 @@ $('.answer').on('click', function() {
         resetTimer();
     }
 });
-
-
-
-//hide wins/losses during game
-//hide() everything except wins/losses at the end
-//show() only wins/losses
