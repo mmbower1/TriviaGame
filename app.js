@@ -4,6 +4,7 @@ var intervalId;
 var wins = 0;
 var losses = 0;
 
+
 var questions = [
     {
         prompt: "How many sides are on a cube?",
@@ -63,6 +64,8 @@ var questions = [
     }
 ];
 
+$(".scoreBoard").hide();
+
 function decrement() {
 
     //  Decrease number by one.
@@ -100,17 +103,28 @@ function stop() {
     clearInterval(intervalId);
 }
 
+function endGame() {
+    if (wins + losses === 9) {
+        $(".container").hide();
+        $(".scoreBoard").show();
+    }
+}
 var i = false;
 
 function setNextQuestion(array) {
     var currentQuestion = questions.shift();
     console.log(currentQuestion);
+    if (questions.length !== 0) {
+        $('#questionSpot').html(currentQuestion.prompt);
+        $('#answer1').html("A: " + currentQuestion.choiceA);
+        $('#answer2').html("B: " + currentQuestion.choiceB);
+        $('#answer3').html("C: " + currentQuestion.choiceC);
+        $('.answer').attr('data-correct', currentQuestion.answer);
 
-    $('#questionSpot').html(currentQuestion.prompt);
-    $('#answer1').html("A: " + currentQuestion.choiceA);
-    $('#answer2').html("B: " + currentQuestion.choiceB);
-    $('#answer3').html("C: " + currentQuestion.choiceC);
-    $('.answer').attr('data-correct', currentQuestion.answer)
+    }
+    else {
+        endGame();
+    }
 }
 
 setNextQuestion(questions);
@@ -134,3 +148,9 @@ $('.answer').on('click', function() {
         resetTimer();
     }
 });
+
+
+
+//hide wins/losses during game
+//hide() everything except wins/losses at the end
+//show() only wins/losses
