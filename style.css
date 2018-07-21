@@ -28,6 +28,10 @@ body {
     width: 900px;
 }
 
+#lastRow {
+    margin-left: 250px;
+}
+
 .row1, .row2, .row3, .row4 {
     font-family:'Britannic Bold';
     text-align: center;
