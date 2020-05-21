@@ -76,7 +76,7 @@ function decrement() {
 
     //  Once number hits zero...
     if (number === 0) {
-        alert('Time Up');
+        swal('Time Up');
         losses++;
         
         //run the stop function.
@@ -137,14 +137,14 @@ $('.answer').on('click', function() {
     console.log(chosen);
 
     if (chosen === $(this).attr('value')) {
-        alert('You win');
+        swal('Correct!');
         wins++;
         $('#wins').text(wins);
         setNextQuestion();
         resetTimer();
     }
     else {
-        alert('You lose');
+        swal('Wrong');
         losses++;
         $('#losses').text(losses);
         setNextQuestion();
